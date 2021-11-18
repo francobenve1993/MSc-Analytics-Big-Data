@@ -6,7 +6,7 @@
 - 📫 &nbsp;How to reach me [franco.benvenuto@student.ie.edu]
 - 👨‍💻 &nbsp;More about my profile at [https://www.linkedin.com/in/franco-benvenuto/]
 - ⚡ &nbsp;Fact: NFT Aggregator | Smartcontracts | Blockchain | Cryptocurrency Advocate | :pencil2: 
-- - 🔭 &nbsp;Emerging Tech Enthusiast
+- 🔭 &nbsp;Emerging Tech Enthusiast
 
 🔗 &nbsp;**Connect with me**
 
