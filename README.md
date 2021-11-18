@@ -2,6 +2,7 @@
 
 ### Welcome to Franco Benvenuto's portfolio :man:
 
+- :seedling: Master in Big Data candidate
 - 🔭 &nbsp;Emerging Tech Enthusiast
 - 📫 &nbsp;How to reach me [franco.benvenuto@student.ie.edu]
 - 👨‍💻 &nbsp;More about my profile at [https://www.linkedin.com/in/franco-benvenuto/]
