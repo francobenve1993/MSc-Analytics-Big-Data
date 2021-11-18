@@ -1,0 +1,287 @@
+---
+title: "PROGRAMMING R WORKGROUP B PROJECT"
+author: "Group B"
+date: "06/11/2021"
+
+---
+
+```{r setup, include=FALSE}
+
+#library imports
+
+library(readr)
+library(ggplot2)
+library(dplyr)
+library(e1071)
+library(outliers)
+#leaflet only for visual purposes of m
+library(leaflet)
+library(data.table)
+library(psych)
+library(glmnet)
+
+set.seed(123)
+
+```
+
+#Import Datasets
+
+
+```{r cars, warning=FALSE}
+
+solar_dataset <- readRDS("/Users/andrea/Documents/MBD/R Programming/Group Project Nov 6/solar_dataset.RData")
+solar_dataset$Date <- as.Date(solar_dataset[["Date"]], "%Y%m%d")
+additional_variables <- readRDS("/Users/andrea/Documents/MBD/R Programming/Group Project Nov 6/additional_variables.RData")
+station_info <- read_csv("/Users/andrea/Documents/MBD/R Programming/Group Project Nov 6/station_info.csv")
+colnames(solar_dataset)
+
+```
+
+#exploratory Data Analysis 
+
+#descriptive Statistics
+
+we can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+
+solar_dataset_subset <- solar_dataset[1:5113, 1:99]
+
+summary(solar_dataset_subset[ , -1])
+
+```
+
+```{r}
+
+date_average <- data.frame(solar_dataset_subset[ , 1],rowMeans(solar_dataset_subset[ , -1]))
+colnames(date_average) <- c("Date", "Average")
+
+#aes = aesthetic mappings
+ggplot(data = date_average, aes(x = Date, y = Average))+
+  geom_line(color = "#00AFBB", size = 0.01) + ggtitle("Average Solar Energy Production across stations (1994-2007)")+ theme(plot.title = element_text(hjust = 0.5))
+
+```
+
+The average solar energy production obtained in the given time span shows high seasonality across days. Cycles are estimated to be monthly based on the weather conditions. 
+
+
+```{r}
+
+
+#column averages
+avg <- data.frame(colMeans(solar_dataset_subset[ , -1]))
+
+#setDT converts lists and data frames to data
+setDT(avg, keep.rownames = TRUE)[]
+colnames(avg) <- c("stid", "Average_Power")
+
+
+station_avg_power <- merge(x = station_info, y = avg, by = "stid", all = TRUE)
+
+
+
+
+```
+
+
+#geographical map
+
+```{r}
+
+
+station_avg_power$level <- cut(station_avg_power$Average_Power, c(14000000,15000000,16000000, 17000000, 18000000, 19000000), labels = c("<15mn", "15-16mn", "16-17mn", "17-18mn", ">18mn"))
+
+powerCol <- colorFactor(palette = 'RdYlGn', station_avg_power$level)
+
+
+m <- leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addCircleMarkers(data = station_avg_power , lng=~elon, lat=~nlat, color = ~powerCol(level), popup = ~stid) %>%
+  addLegend('bottomright', pal = powerCol, values = station_avg_power$level,
+            title = 'Average Solar <br> power production',
+            opacity = 1)
+
+m
+
+
+
+
+```
+
+
+geographical locations of all the stations can be seen with color showing the quantity of production.  BIOS, HOOK and KENT had above 18,000,000 unit of solar energy production while MTHE has below 15,000,000 units. Stations in west are generating comparatively higher quantities compared to stations in east. 
+
+
+# Correlation
+
+```{r}
+
+correlation_matrix <- cor(solar_dataset_subset[ , -1])
+
+heatmap(cor(solar_dataset_subset[ , -1]))
+
+```
+
+correlation matrix show clear signs of high correlations across blocks. Certain areas are extremely dark compared to other showing high correlations between geographically adjacent stations due to similarity in the weather
+
+
+```{r}
+
+skew(solar_dataset_subset[, -1], na.rm = TRUE)
+
+
+```
+
+
+skewness calculations showed that the solar energy production do not show very high deviation from average production and the distribution is skewed to the right which shows more number of days have usually higher than average power generation. 
+
+#outlier Detection - method 1
+
+```{r}
+#normalize the dataset
+solar_dataset_subset_normalized <- scale(solar_dataset_subset[ , -1])
+
+x <- data.frame(solar_dataset_subset_normalized >= 3 | solar_dataset_subset_normalized <=-3)
+
+```
+
+The dataset with production quantity available is normalized to check for outliers. Two approaches would be used to determine outliers. 
+
+1) If z_scores greater than 3 or less than -3, the observation in normalized data would be considered outlier. 
+
+```{r}
+
+outlier_list <- c()
+
+for(i in 1: length(x)){
+  new_value <- sum(x[ ,i]==TRUE)
+  outlier_list <- c(outlier_list, new_value)
+  #print(i)
+}
+
+outlier_list
+
+outlier_index <- match(c(1),outlier_list)
+
+colnames(x)[outlier_index]
+#IDAB
+
+```
+
+as can be seen that only once at station IDAB, there was a surge in production more than unusual. Thus, there is existence of an outlier. But none of the other stations shown any extremity in the weather conditions due to which no major change in production occur
+
+
+```{r}
+#acme
+p <- ggplot(solar_dataset_subset, aes(x=Date, y=ACME)) +
+  geom_line() + 
+  xlab("")
+  p+scale_x_date(date_labels = "%Y %b %d")
+
+#idab
+p <- ggplot(solar_dataset_subset, aes(x=Date, y=IDAB)) +
+  geom_line() + 
+  xlab("")
+  p+scale_x_date(date_labels = "%Y %b %d")
+
+```
+
+visualizing the individual power stations with and without outliers showed that IDAB had power production surge once in 1994 
+
+#outlier Detection - method 2
+
+The method would be applied on the station IDAB to validate the results of Method 1
+
+#our null and alt
+$H_0:$ There is no outlier in production at station IDAB
+$H_a:$ There is an outlier in production at station IDAB
+
+```{r}
+
+which.max(solar_dataset_subset$IDAB)
+abc <- grubbs.test(solar_dataset_subset$IDAB)
+#grubbs test for one outlier
+abc
+
+```
+
+As the p-value for the test is above 0.05, fail to reject null hypothesis. There is no sufficient evidence of the existence of outlier. 
+
+# Machine Learning Model
+
+
+```{r}
+
+
+df <- solar_dataset[ 1:5113, ]
+df$day <- format(df$Date, "%d")
+idx <- sample(seq(1, 3), size = nrow(df), replace = TRUE, prob = c(.8, .2, .2))
+train <- df[idx == 1,]
+test <- df[idx == 2,]
+val <- df[idx == 3,]
+
+```
+
+
+
+
+```{r}
+solar_dataset$day <- format(solar_dataset$Date, "%d")
+final_pred <- data.frame(solar_dataset[ 5114:6909, 1:99])
+
+```
+
+generating the empty data frame for storing predicted solar energy predictions.
+
+
+
+```{r}
+
+train.x <-  data.matrix(train[ , 100:457])
+
+for (i in 2:99){
+  train.y <-  data.matrix(train[ , ..i])
+  mlm <- glmnet(train.x, train.y,family="gaussian", lambda = cv.glmnet(train.x, train.y)$lambda.1se)
+  ypred_val <- predict.glmnet(mlm, data.matrix(val[ , 100:457]), type = c("response"))
+  ypred_test <- predict.glmnet(mlm, data.matrix(solar_dataset[ 5114: 6909, 100:457]), type = c("response"))
+  final_pred[ , i] <- ypred_test
+  
+  
+}
+
+
+```
+
+considering lambda 1se (largest value of lambda such that error is within 1 standard error of the minimum) is the optimal solution the GLM model (gen linear mod) is developed to predict the solar production from 1 Jan 2008 to 30 Nov 2012.
+
+
+```{r}
+
+
+x <- data.frame(final_pred$Date)
+x$y <- anytime::yyyymmdd(x$final_pred.Date)
+
+final_pred$Date <- x$y
+
+```
+
+
+```{r}
+write.csv(x=final_pred, file="Final Predictions Group B.csv", row.names = FALSE)
+```
+
+
+to save the file
+
+
+
+
+
+
+
+
+
+
+
+
+
