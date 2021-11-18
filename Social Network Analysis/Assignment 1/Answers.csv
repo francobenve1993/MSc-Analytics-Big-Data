@@ -1,0 +1,14 @@
+Question;YOUR_EMAIL
+*1) How many nodes are there?*;Number
+*2) How many edges are there?*;Number
+*3) How does this distributions look like?*;Sentence
+*4) What is the maximum degree?*;Number
+*5) What is the minum degree?*;Number
+*6) What is the diameter of the graph?*;Number
+*7) What is the avg path length of the graph?*;Number
+*8) Who is the actor with highest degree centrality?*;Number/Name
+*9) How do you explain the high degree of the top-20 list??*;Sentence
+*10) Who is the actor with highest betweenes?*;Number/Name
+*11) How do you explain the high betweenness of the top-20 list?*;Sentence
+*12) Who is the actor with highest closeness centrality?*;Number/Name
+*13) How do you explain the high closeness of the top-20 list? *;Sentence
