@@ -1,3 +1,6 @@
+The course's main objective is to provide a working methodology and knowledge for the use of forecasting models and econometric techniques in the areas of business and economics.
+Learn how to forecast the future using ARIMA class models and generate predictions and insights using machine learning models.
+
 
 1.	Find at least two linear time series models, using the Box-Jenkins methodology, for the quarterly earnings per share of Coca-Cola Company from the first quarter of 1983 to the third quarter of 2009. Identify your models using the entire available sample (coca_cola_earnings.csv)
 
