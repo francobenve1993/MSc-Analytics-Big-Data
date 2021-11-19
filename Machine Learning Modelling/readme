@@ -1,6 +1,9 @@
 This course provides a broad vision of machine learning from its key underlying theoretical concepts to its practical applications. The course is divided into three blocks offering a journey from the machine learning basics, the most successful and classical approaches to the state-of-the-art techniques able to successfully model vast amount of data.
 
 - Feature Engineering
+
 - Performance measures & Evaluation metrics
+
 - Supervised Learning: Naive Bayes, Nearest Neighbor, Decision Trees, Linear Regression, Support Vector Machines (SVM), Neural Networks & Random Forests
+
 - Unsupervised Learning: K-means clustering, Dimensionality Reduction & Association Rules.
