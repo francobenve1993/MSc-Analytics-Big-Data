@@ -1,1 +1,8 @@
+The increasing importance of the Web as a medium for electronic and business transactions has served as a driving force for the development of recommender systems technology. An important catalyst in these regards is the ease with which the Web enables users to provide feedback about likes or dislikes. We can see daily examples in providers as Netflix or Amazon.
+
+The basic idea of these recommendation algorithms is to infer interactions between customers and the products of his interest.
+
+There are many algorithms we can apply in order to infer the customers’ interest and the purpose of the sessions are not only the understanding of those techniques but also the implementation and evaluation of the one that fits better the end user interest.
+
+We will demonstrate how to implement Collaborative Filtering, Content-Based Filtering and Hybrid methods in Python, for the task of providing personalized recommendations to the users.
 
