@@ -1,0 +1,16 @@
+Assignment:
+
+In this project you will be working with a real-world dataset from the Kaagle platform corresponding to the “AMS 2013-2014 Solar Energy Prediction Contest”.
+
+The goal here is to perform Exploratory Data Analysis on the given dataset to extract information, carry on data cleaning and pre-processing, and/or visualize the dataset.
+Some ideas of what can be done here are:
+
+• Compute statistics of each column.
+• Compute correlations.
+• Outlier detection/removal/correction.
+• Data scaling e.g. subtract mean and divide by standard deviation.
+• Dimensionality reduction.
+• Visualization of column values and distributions.
+• Visualization of correlations.
+• Visualization on a map using leaflet or similar.
+• Anything that comes to your mind and makes sense. Creativity will be rewarded.
