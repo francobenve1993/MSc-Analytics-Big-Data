@@ -1,0 +1,54 @@
+CONVOLUTIONAL NEURAL NETS - ASSIGNEMNT GUIDELINES
+
+1. CATS & DOGS [2 pts]
+
+We will start by following the notebook. 01_cnn_template.ipynb, where our goal will be to build a neural net for classifying cats and dogs images.
+
+EVALUATION QUESTIONS AND CODING EXERCISES
+You will find three different TODOs in the code.
+
+TODO 1. Add a convolutional layer with the specifications defined in the code.
+
+TODO 2. Flatten the output of the last convolutional layer to add a dense layer.
+
+TODO 3. Add the dense layer (the one before the last output layer) with the
+specifications defined in the code.
+
+
+2. REGULARIZATION [3 pts]
+
+We are at 72% of validation accuracy, while at a 100% percent in training accuracy. Clearly, we are in an overfitting scenario. Too many free params (~10M!) for just a few samples
+(2000)
+In the next notebook 02_cnn_template.ipynb, we are trying to cope with this, by using several regularization techniques.
+
+EVALUATION QUESTIONS AND CODING EXERCISES
+
+TODO 1. Data Augmentation. Explain how it is working ImageDataGenerator.
+Specifically, explain what all the parameters, already set, and their respective values mean.
+One by one, from rotation_range to fill_mode.
+
+TODO 2. Dropout.
+• Explain	Dropout	as	a	regularization	technique.
+• Add	a	Dropout	layer	with	a	dropout	rate	of	0.2.
+• Try	dropout	of	0.9	and	0.1	rate.	Explain	the	different	behavior.
+
+TODO 3. Fit the final model following the specifications in the code
+
+
+3. STAND ON THE SHOULDERS OF GIANTS [4 pts]
+
+We did it very well, but could we do it better? The answer is yes. How? By using a pre-trained net. In this case we will use Inception V3
+For that we will use the notebook 03_cnn.ipynb and 04_cnn_template.ipynb
+
+TODO 1. Do some research and explain the inception V3 topology. Which database
+do they use for training it? How was trained?
+
+TODO 2. Inception V3 is set by default to admit input images of (299, 299, 3)
+dimensions; but we want (and we will use) inputs of (150, 150, 3). If the net is already
+trained, how is that even possible?
+
+TODO 3. Let’s change the database. Will Inception work well with different
+objects? Use Inception V3 to outperform the results of a small convnet in a flower database.
+
+Complete the code in 04_cnn_template.ipynb to use Inception V3 in this database in the
+same way we did it for cats & dogs.
