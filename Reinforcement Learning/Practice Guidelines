@@ -1,0 +1,27 @@
+PRACTICE GUIDELINES: LUNAR LANDING
+
+In this case we will play with the Lunar Lander Gym from OpenAI, and will work with the Proximal Policy Optimization (PPO) algorithm.
+
+Instructions:
+
+Check the video with the detailed instructions here: https://youtu.be/u6FAx90Ax0I (ignore the dates I mention on it, as it was recorded during the last term)
+As you can see, we will use Google Colab. I trust you are familiar with Colab, otherwise let me know and I can share some resources for getting started.
+You are being provided with 2 notebooks stored in this location: https://github.com/rodzanto/RL-LunarLander/tree/main/ngoodger-LunarLander-PPO
+
+The “Recurrent PPO” notebook is for setting up the environment and running the training
+
+The “Test Recurrent PPO” notebook is for evaluating the checkpoints and checking the video of the landing
+
+You must upload those 2 notebooks to your Google Colab account.
+
+After the activity you are expected to deliver:
+
+A paragraph explaining your reasoning while iterating, i.e. how did you adjusted the hyper-parameters or any other details and why 
+the configuration or actual hyper-parameters that gave you the best result of the landing together with the video of the landing for this configuration
+you can send this by either posting on the Campus Forum for this activity, or directly responding to this email
+you have from now until Tuesday Dec 14th at 23:59 CEST for delivering your best solution for the challenge. You can send more than one solution 
+if you find better results, as long as it is before the deadline.
+
+The activity accounts for 15% of the course grade, and the evaluation will be based on:
+Participation – i.e. you have delivered a solution, even if a bad one reasoning for/while adjusting hyperparameters quality of the solution obtained 
+and thinking out of the box
