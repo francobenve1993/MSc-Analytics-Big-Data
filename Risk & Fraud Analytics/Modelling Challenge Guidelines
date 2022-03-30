@@ -1,0 +1,25 @@
+MODELLING CHALLENGE GUIDELINES
+
+The individual exercise is a Kaggle style competition.
+
+- Please watch this video to see how to play the game: http://youtu.be/UpmUvJ5e_64?hd=1 
+- Please sign up to http://manoelutad.pythonanywhere.com/ranking/6aQ6IxU7Va and choose Player profile 
+- Then log in and visit the competition web page: http://manoelutad.pythonanywhere.com/ranking/6aQ6IxU7Va
+- Watch this video with some ideas: https://www.youtube.com/watch?v=8PU4N8EeQPc
+
+EXERCISE GRADING: the grade will be divided into 3 parts
+
+- 33% * the GINI score that appears in http://manoelutad.pythonanywhere.com/ranking/6aQ6IxU7Va Sunday 12th/December at 10pm (it will be devided by 
+the best student * 10.0)
+- 33% * the GINI score that appears in http://manoelutad.pythonanywhere.com/ranking/6aQ6IxU7Va x 17.0 (note this grade is from 0 to 10) for your 
+user at the end of the competition. Your score in the page corresponds to the best score obtained during the whole competition.
+- The other 34% of the grade will come from the grade (from 0 to 10) given by the teacher after the revising the Jupyter Notebook (code delivered 
+by the student), and the Log Book (Word or PDF) with the description of the tests made by the student and what has worked and what has not worked.
+ 
+
+What to deliver in here? Deliverables:  
+
+The student must submit ONE zip file containing the python code (.py) or the Python Noteboook (ipynb) or R code (or, if you are using another tool, 
+you should export the code/project) and the LogBook (template attached). The logbook must include the list of actions that you have implemented during 
+the game and for each action/test you should state whether it has improved or not the model or show the KS/GINI achieved, and if you know the reason why 
+it worked or not please include that (it is OK to try even if this is not the correct answer).
