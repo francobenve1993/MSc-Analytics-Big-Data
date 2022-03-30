@@ -1,0 +1,27 @@
+SUPPORT VECTOR MACHINE CLASSIFICATION
+
+Implement a working solution for a Machine Learning problem. In more detail, we will make use of the Mobile Price Classification dataset.
+
+For more details, please refer to the webpage of the dataset in Kaggle: https://www.kaggle.com/iabhishekofficial/mobile-price-classification. 
+In this sense, your solution must include:
+
+- Python Notebook with the implementation of your solution. And it has to generate the prediction file that you send me. Please, leverage 
+the capabilities that these formats provide to explain and analyze your results. 
+
+- In addition to the description of your work that you will include in the report (see point 3), it is always nice to review a Notebook that explains what 
+you are trying to do and to analyze the results, instead of just being a list of code cells to be executed with no information whatsoever. 
+You can use the Notebook to provide a more technical explanation and the report for a more business-like description. 
+
+Just make sure to comprehensively explain in the report (see point 3) these steps.
+
+Prediction file, including the predictions of your final model to the data in the test set. This is what I will use to evaluate the quality of your model. 
+I have created a training and a test dataset (attached to this announcement). This prediction file must include the predictions that your model assigns to 
+the data in the provided test dataset.
+
+A comprehensive description of your work: It has to summarize all your findings, the insights you could have extracted from the data, the conclusions of 
+the different steps of your analysis, as well as the conclusions from your results. Think of this report as what you would present to the relevant 
+business stakeholders to justify your work.
+
+The final grade of your assignment will depend on:
+Performance of your model (measured by the accuracy in predicting the target variable: price_range), compared to the performance of the rest of the 
+groups (50%).  Report summarizing your work (50%)
